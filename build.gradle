@@ -1,0 +1,37 @@
+group 'com.playground.kafka'
+
+buildscript {
+    ext {
+        springBootVersion = "2.6.10"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+subprojects {
+    project.group("com.playground.kafka")
+
+    apply plugin: "java"
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.spring.dependency-management"
+
+    sourceCompatibility = JavaVersion.VERSION_11;
+    targetCompatibility = JavaVersion.VERSION_11;
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation 'org.springframework.kafka:spring-kafka'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'org.springframework.kafka:spring-kafka-test'
+    }
+}
